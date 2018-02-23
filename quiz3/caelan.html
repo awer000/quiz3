@@ -29,11 +29,18 @@
           }
 
         }
+        
         hint.onclick = function() {
-          localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+          if (Number(localStorage.getItem("life")) > 0) {
 
-          document.getElementById("result").innerHTML = localStorage.getItem("life")
-          alert('조원준이냐? 불쌍해서 그냥 답 알려준다 ㅠㅠ 원탑임')
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            alert('조원준이냐? 불쌍해서 그냥 답 알려준다 ㅠㅠ 원탑임')
+
+          } else {
+            alert('생명력이 0이면 힌트를 얻을 수 없습니다.')
+          }
         }
 
 
