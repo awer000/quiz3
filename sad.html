@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="kor">
+    <title>연화인 능력 검정 시험</title>
+    <style>
+      h1 {
+        font-size: 70px;
+        font-family: 궁서;
+
+
+      }
+      p {
+        margin-bottom: 50px;
+
+      }
+      #article {
+        text-align: center;
+      }
+
+      #header {
+        margin-top: 30px;
+        text-align: center;
+      }
+      #article img {
+        width: 600px;
+      }
+      img #logo {
+        height: 70%;
+      }
+      video {
+        width: 600px;
+      }
+      small {
+        color: gray;
+      }
+
+
+
+    </style>
+    <script>
+      window.onload = function() {
+        let start = document.getElementById('start')
+
+        function goBack() {
+          window.history.back()
+
+        }
+        start.onclick = function () {
+          goBack()
+        }
+
+      }
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <img id="logo" src="picture/yeonhwa.jpg">
+      <h1>제 3 회 연화인 능력 검정 시험</h1>
+      <h2>현재 Life</h2>
+      <div id="result"></div>
+      <button id="up" onclick="upClick()">Up</button>
+
+      <script>
+      if (typeof(Storage) !== "undefined") {
+
+        if (!localStorage) {
+          localStorage.setItem("life", 3);
+          // Retrieve
+          document.getElementById("result").innerHTML = localStorage.getItem("life");
+        } else {
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          function upClick() {
+
+            if (Number(localStorage.getItem("life")) < 5) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) + 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            } else {
+              alert('Life가 5 이상인 경우 할 수 없습니다.')
+            }
+          }
+
+          function downClick() {
+            if (Number(localStorage.getItem("life")) > 0) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+            } else {
+              alert('0 이하는 할 수 없습니다.')
+            }
+          }
+        }
+
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+
+    </header>
+    <div id="article">
+      <article>
+        <img src="picture/2sadending.jpg">
+        <p>탈락 하였습니다.
+        </p>
+        <button id="start" name="시작하기" value="시작하기">다시 도전하기</button>
+
+      </article>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="kor">
+    <title>연화인 능력 검정 시험</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+      window.onload = function() {
+        let start = document.getElementById('start')
+
+        start.onclick = function () {
+          location.href="quiz3/19024809.html"
+        }
+
+      }
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <img id="logo" src="picture/yeonhwa.jpg">
+      <h1>제 3 회 연화인 능력 검정 시험</h1>
+      <h2>현재 Life</h2>
+      <div id="result"></div>
+      <button id="up" onclick="upClick()">Up</button>
+
+      <script>
+      if (typeof(Storage) !== "undefined") {
+
+        if (!localStorage) {
+          localStorage.setItem("life", 3);
+          // Retrieve
+          document.getElementById("result").innerHTML = localStorage.getItem("life");
+        } else {
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          function upClick() {
+
+            if (Number(localStorage.getItem("life")) < 5) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) + 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            } else {
+              alert('Life가 5 이상인 경우 할 수 없습니다.')
+            }
+          }
+
+          function downClick() {
+            if (Number(localStorage.getItem("life")) > 0) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+            } else {
+              alert('0 이하는 할 수 없습니다.')
+            }
+          }
+        }
+
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+
+    </header>
+    <div id="article">
+      <article>
+
+        <p>아래의 문장을 안민원의 카카오톡으로 보내시오 <br/><br/> <b>"배움은 나의 힘, 함께는 우리의 힘"</b> <br/><br/> 수고하셨습니다.
+        </p>
+        <button id="start" name="시작하기" value="시작하기">다시 풀어보기</button>
+      </article>
+  </div>
+  </body>
+</html>

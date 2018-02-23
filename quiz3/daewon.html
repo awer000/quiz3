@@ -1,0 +1,108 @@
+<!--8번째 입니다.-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="kor">
+    <title>자지말고 풀어라! 더 스펙타클 해진 연화인 능력 검정시험!</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+      window.onload = function() {
+        let answer = document.getElementById('answer')
+
+        answer.onclick = function () {
+          if (Number(localStorage.getItem("life")) > 0) {
+            let answer2 = prompt('답변을 입력해 주세요')
+            if (answer2 != '인형뽑기') {
+              alert('탈락')
+
+              location.href="../sad.html"
+            } else {
+              location.href="vale.html"
+            }
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          } else {
+            alert('생명력이 0 이하면 진행할 수 없습니다.')
+          }
+
+        }
+        hint.onclick = function() {
+          localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+          alert('돈을 넣고 무언가를 뽑음. 또는 그 기계 (네글자)')
+        }
+
+
+        let logo = document.getElementById('logo')
+
+
+        logo.onclick = function () {
+          location.href="../index.html"
+        }
+
+      }
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <img id="logo" src="../picture/yeonhwa.jpg">
+      <h1>제 3 회 연화인 능력 검정 시험</h1>
+      <h2>현재 Life</h2>
+      <div id="result"></div>
+      <button id="up" onclick="upClick()">Up</button>
+
+      <script>
+      if (typeof(Storage) !== "undefined") {
+
+        if (!localStorage) {
+          localStorage.setItem("life", 3);
+          // Retrieve
+          document.getElementById("result").innerHTML = localStorage.getItem("life");
+        } else {
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          function upClick() {
+
+            if (Number(localStorage.getItem("life")) < 5) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) + 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            } else {
+              alert('Life가 5 이상인 경우 할 수 없습니다.')
+            }
+          }
+
+          function downClick() {
+            if (Number(localStorage.getItem("life")) > 0) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+            } else {
+              alert('0 이하는 할 수 없습니다.')
+            }
+          }
+        }
+
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+
+    </header>
+    <div id="article">
+      <article>
+        <img src="../picture/8jigab.jpg"/>
+        <p>Q8. 조원준이 지갑을 잃어버린 이 곳은 어디인가?
+        </p>
+        <button id="answer">답변하기</button>
+        <button id="hint">힌트보기</button>
+        <div id="picture"></div>
+      </article>
+  </div>
+  </body>
+</html>

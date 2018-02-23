@@ -1,0 +1,143 @@
+<!--11번째 입니다.-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="kor">
+    <title>자지말고 풀어라! 더 스펙타클 해진 연화인 능력 검정시험!</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+      window.onload = function() {
+        let answer = document.getElementById('answer')
+
+        answer.onclick = function () {
+          if (Number(localStorage.getItem("life")) > 0) {
+            let answer2 = prompt('답변을 입력해 주세요')
+            if (answer2 != '바이올린첼로클라리넷') {
+              alert('탈락')
+
+              location.href="../sad.html"
+            } else {
+              location.href="fabio.html"
+            }
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          } else {
+            alert('생명력이 0 이하면 진행할 수 없습니다.')
+          }
+
+        }
+        hint1.onclick = function() {
+          if (Number(localStorage.getItem("life")) > 0) {
+
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            alert('악기는 총 3개이다.')
+
+          } else {
+            alert('생명력이 0이면 힌트를 얻을 수 없습니다.')
+          }
+        }
+
+        hint2.onclick = function() {
+          if (Number(localStorage.getItem("life")) > 2) {
+
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 3)
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            alert('악기는 총 3개이고 한 악기는 바이올린, 나머지 한 악기는 현악기, 마지막 한 악기는 목관악기이다.')
+
+
+          } else {
+            alert('생명력이 2 이하면 힌트를 얻을 수 없습니다.')
+          }
+        }
+
+        hint3.onclick = function() {
+          if (Number(localStorage.getItem("life")) > 3) {
+
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 4)
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            document.getElementById('picture').innerHTML = "https://youtu.be/-7eli39PjhM"
+
+          } else {
+            alert('생명력이 3 이하면 힌트를 얻을 수 없습니다.')
+          }
+        }
+
+
+        let logo = document.getElementById('logo')
+
+
+        logo.onclick = function () {
+          location.href="../index.html"
+        }
+
+      }
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <img id="logo" src="../picture/yeonhwa.jpg">
+      <h1>제 3 회 연화인 능력 검정 시험</h1>
+      <h2>현재 Life</h2>
+      <div id="result"></div>
+      <button id="up" onclick="upClick()">Up</button>
+
+      <script>
+      if (typeof(Storage) !== "undefined") {
+
+        if (!localStorage) {
+          localStorage.setItem("life", 3);
+          // Retrieve
+          document.getElementById("result").innerHTML = localStorage.getItem("life");
+        } else {
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          function upClick() {
+
+            if (Number(localStorage.getItem("life")) < 5) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) + 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            } else {
+              alert('Life가 5 이상인 경우 할 수 없습니다.')
+            }
+          }
+
+          function downClick() {
+            if (Number(localStorage.getItem("life")) > 0) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+            } else {
+              alert('0 이하는 할 수 없습니다.')
+            }
+          }
+        }
+
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+
+    </header>
+    <div id="article">
+      <article>
+        <img src="../picture/playing10.png" />
+        <p>Q11. 이 곳에서 안민원이 연주한 곡의 악기 편성은 어떻게 되는가? <small>(악기 이름 모두 띄어쓰기 없이 붙여서 ㄱㄴㄷ 순으로 기입하시오)</small>
+        </p>
+        <button id="answer">답변하기</button><br/><br/>
+        <button id="hint1">초급 힌트보기(Life 1 감소)</button>
+        <button id="hint2">중급 힌트보기(Life 3 감소)</button>
+        <button id="hint3">고급 힌트보기(Life 4 감소)</button>
+        <div id="picture"></div>
+      </article>
+  </div>
+  </body>
+</html>

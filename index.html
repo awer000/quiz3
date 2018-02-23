@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="kor">
+    <title>자지말고 풀어라! 더 스펙타클 해진 연화인 능력 검정시험!</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5080291454649353",
+          enable_page_level_ads: true
+     });
+</script>
+    <script>
+      window.onload = function() {
+        let start = document.getElementById('start')
+
+        start.onclick = function () {
+          if (Number(localStorage.getItem("life")) > 0) {
+            localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+            document.getElementById("result").innerHTML = localStorage.getItem("life")
+            location.href="quiz3/19024809.html"
+          } else {
+            alert('생명력이 0 이하면 진행할 수 없습니다.')
+          }
+
+
+        }
+        let logo = document.getElementById('logo')
+
+        logo.onclick = function () {
+          location.href=location.href
+        }
+
+
+
+      }
+    </script>
+  </head>
+  <body>
+    <header id="header">
+      <img id="logo" src="picture/yeonhwa.jpg">
+      <h1>제 3 회 연화인 능력 검정 시험</h1>
+      <h2>현재 Life</h2>
+      <div id="result"></div>
+      <button id="up" onclick="upClick()">Up</button>
+
+      <script>
+      if (typeof(Storage) !== "undefined") {
+
+        if (!localStorage) {
+          localStorage.setItem("life", 3);
+          // Retrieve
+          document.getElementById("result").innerHTML = localStorage.getItem("life");
+        } else {
+          document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+          function upClick() {
+
+            if (Number(localStorage.getItem("life")) < 5) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) + 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+
+            } else {
+              alert('Life가 5 이상인 경우 할 수 없습니다')
+            }
+          }
+
+          function downClick() {
+            if (Number(localStorage.getItem("life")) > 0) {
+              localStorage.setItem("life", Number(localStorage.getItem("life")) - 1)
+
+              document.getElementById("result").innerHTML = localStorage.getItem("life")
+            } else {
+              alert('0 이하는 할 수 없습니다.')
+            }
+          }
+        }
+
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+
+    </header>
+    <div id="article">
+      <audio src="music/haydn.mp3" autoplay></audio>
+      <article>
+        <p>현재 단톡방에 있는 연화인에 대한 문제입니다.<br>
+        총 열 다섯 문제로, 갈수록 난이도가 급 상승하니 고혈압이 있는 분들은 창을 닫아주세요.<br>
+        아래 버튼을 누르면 시작합니다.<br>
+        그럼, 행운을 빕니다.
+        </p>
+        <h2>좀 더 재밌는 경험을 위해 PC에서 풀 것을 추천합니다</h2>
+        <button id="start" name="시작하기" value="시작하기">시작하기</button>
+      </article>
+  </div>
+
+  </body>
+</html>
